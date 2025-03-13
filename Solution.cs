@@ -9,7 +9,39 @@ namespace Method_lab1
 {
     internal class Solution
     {
-        
+        public bool do_stuff_normal()
+        {
+            string str;
+
+            Console.WriteLine("Введіть коефіцієнти квадратного рівняння:");
+
+            Console.Write("a = ");
+            str = Console.ReadLine();
+            if (!int.TryParse(str, out int a))
+            {
+                Console.WriteLine($"Ви ввели {str}, а треба було число. Спробуємо знов.");
+                return true;
+            }
+
+            Console.WriteLine("b = ");
+            str = Console.ReadLine();
+            if (!int.TryParse(str, out int b))
+            {
+                Console.WriteLine($"Ви ввели {str}, а треба було число. Спробуємо знов.");
+                return true;
+            }
+
+            Console.Write("c = ");
+            str = Console.ReadLine();
+            if (!int.TryParse(str, out int c))
+            {
+                Console.WriteLine($"Ви ввели {str}, а треба було число. Спробуємо знов.");
+                return true;
+            }
+
+            solve(a, b, c);
+            return true;
+        }
 
         public void do_stuff_file(string filename)
         {
