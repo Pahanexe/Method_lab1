@@ -9,8 +9,9 @@ namespace Method_lab1
 {
     internal class Program
     {
-        void Main(string[] args)
+        static void Main(string[] args)
         {
+            Solution s=new Solution();
             if (args.Length > 0)
             {
                 string filePath = args[0];
@@ -34,7 +35,7 @@ namespace Method_lab1
             }
             else
             {
-                while (do_stuff())
+                while (s.do_stuff_normal())
                 {
                     Console.WriteLine("Бажаєте продовжити?");
                     Console.WriteLine("1 - так");
@@ -47,54 +48,8 @@ namespace Method_lab1
                 }
             }
         }
-        private bool do_stuff()
-        {
-            string str;
+        
 
-            Console.WriteLine("Введіть коефіцієнти квадратного рівняння:");
-
-            Console.Write("a = ");
-            str = Console.ReadLine();
-            if (!int.TryParse(str, out int a))
-            {
-                Console.WriteLine($"Ви ввели {str}, а треба було число. Спробуємо знов.");
-                return true;
-            }
-
-            Console.WriteLine("b = ");
-            str = Console.ReadLine();
-            if (!int.TryParse(str, out int b))
-            {
-                Console.WriteLine($"Ви ввели {str}, а треба було число. Спробуємо знов.");
-                return true;
-            }
-            Console.Write("c = ");
-            str = Console.ReadLine();
-            if (!int.TryParse(str, out int c))
-            {
-                Console.WriteLine($"Ви ввели {str}, а треба було число. Спробуємо знов.");
-                return true;
-            }
-
-            return true;
-        }
-
-        private void solve(int a, int b,int c)
-        {
-            double d = b * b - 4 * a * c;
-            if(d < 0)
-            {
-                Console.WriteLine("Рівняння не має коренів");
-                return;
-            }
-            if (d == 0)
-            {
-                double answr = -b / (2 * a);
-                Console.WriteLine($"Коренем рівння є {answr}");
-            
-            }
-
-
-        }
+        
     }
 }
