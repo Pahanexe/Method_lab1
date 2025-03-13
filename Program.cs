@@ -14,24 +14,10 @@ namespace Method_lab1
             Solution s=new Solution();
             if (args.Length > 0)
             {
+                s.do_stuff_file(args[0]);
                 string filePath = args[0];
 
-                if (File.Exists(filePath))
-                {
-                    Console.WriteLine($"Отримано файл: {filePath}");
-                    string content = File.ReadAllText(filePath);
-                    string[] parts = content.Split(new char[] { ' ', ',', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (parts.Length == 3 && parts.All(p => int.TryParse(p, out _)))
-                    {
-                        Console.WriteLine("Файл містить рівно три числа.");
-                        int[] numbers = parts.Select(int.Parse).ToArray();
-                        Console.WriteLine($" {numbers[0]}X^2, +({numbers[1]})*X+,( {numbers[2]})=0");
-                    }
-                    else
-                    {
-                        Console.WriteLine("File had wrong stuf.");
-                    }
-                }
+                
             }
             else
             {
