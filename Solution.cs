@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,30 @@ namespace Method_lab1
 
             solve(a, b, c);
             return true;
+        }
+
+        public void do_stuff_file(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                Console.WriteLine($"Файл {filename} не існує.");
+                return;
+            }
+
+            Console.WriteLine($"Отримано файл: {filename}");
+            string content = File.ReadAllText(filename);
+            string[] parts = content.Split(new char[] { ' ', ',', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts.Length == 3 && parts.All(p => int.TryParse(p, out _)))
+            {
+                int[] numbers = parts.Select(int.Parse).ToArray();
+                solve(numbers[0], numbers[1], numbers[2]);
+            }
+            else
+            {
+                Console.WriteLine("У файлі не було чисел для квадратного рівняння.");
+            }
+
         }
 
         private void solve(int a, int b, int c)
